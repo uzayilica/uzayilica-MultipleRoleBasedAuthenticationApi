@@ -4,7 +4,7 @@ import org.springframework.data.domain.AuditorAware;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
-@Component("AuditorAware")
+@Component("AwareConfig")
 public class AwareConfig implements AuditorAware<String> {
     @Override
     public Optional<String> getCurrentAuditor() {
