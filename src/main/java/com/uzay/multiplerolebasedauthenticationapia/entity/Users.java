@@ -1,5 +1,6 @@
 package com.uzay.multiplerolebasedauthenticationapia.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = "username",name = "uniqueIsim"))
+@Table( uniqueConstraints = @UniqueConstraint(columnNames = "username",name = "uniqueIsim"))
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +25,7 @@ public class Users {
 
     private String password;
 
+    @JsonManagedReference // Kullanıcıdan gelen rol referansları
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private List<Roles> roles;
 }

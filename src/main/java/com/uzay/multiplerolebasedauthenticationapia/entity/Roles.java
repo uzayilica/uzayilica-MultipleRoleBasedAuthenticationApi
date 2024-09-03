@@ -1,5 +1,7 @@
 package com.uzay.multiplerolebasedauthenticationapia.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,6 +24,7 @@ public class Roles {
 
     private String roleDescription;
 
+    @JsonBackReference // Rolün kullanıcı referansı
     @ManyToOne
     @JoinColumn(name = "user_id")
     private Users user;
