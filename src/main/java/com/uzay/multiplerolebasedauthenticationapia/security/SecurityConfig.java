@@ -66,7 +66,11 @@ public class SecurityConfig {
         )
                 .authorizeHttpRequests(req->
 
-                        req.requestMatchers("/public/**","/error/**","/error").permitAll()
+                        req.
+                                requestMatchers("/public/**","/error/**","/error").permitAll()
+                                .requestMatchers("/admin/**").hasRole("ADMIN")
+                                .requestMatchers("/user/**").hasRole("USER")
+                                .requestMatchers("/gizli").denyAll()
                                 .anyRequest().authenticated()
                 )
 
