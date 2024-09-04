@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 public class RoleController {
 
@@ -23,7 +23,7 @@ public class RoleController {
         this.roleRepository = roleRepository;
     }
 
-    @PostMapping("/add-role")
+    @PostMapping("public/add-role")
     public ResponseEntity<?> addRole(@RequestBody Roles role) {
         if (role.getUser() == null || role.getUser().getId() == null) {
             return ResponseEntity.badRequest().body("Geçersiz kullanıcı bilgisi.");
@@ -58,6 +58,10 @@ public class RoleController {
     }
 
 
+    @PostMapping("/uzay")
+    public ResponseEntity<String> test() {
+        return ResponseEntity.ok("test");
+    }
 
 
 
