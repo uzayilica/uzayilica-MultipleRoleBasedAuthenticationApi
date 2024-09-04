@@ -23,7 +23,7 @@ public class RoleController {
         this.roleRepository = roleRepository;
     }
 
-    @PostMapping("public/add-role")
+    @PostMapping("add-role")
     public ResponseEntity<?> addRole(@RequestBody Roles role) {
         if (role.getUser() == null || role.getUser().getId() == null) {
             return ResponseEntity.badRequest().body("Geçersiz kullanıcı bilgisi.");
