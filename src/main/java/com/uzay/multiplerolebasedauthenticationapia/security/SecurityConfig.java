@@ -59,20 +59,20 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .csrf(AbstractHttpConfigurer::disable)
+                .csrf(csrf->csrf
+                .ignoringRequestMatchers("/public/**")
+                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+
+        )
                 .authorizeHttpRequests(req->
 
                         req.requestMatchers("/public/**","/error/**","/error").permitAll()
                                 .anyRequest().authenticated()
                 )
-                .authenticationProvider(authenticationProvider())
+
                 .sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
-
-
-
-
-                        .cors(cors->cors.configurationSource(corsConfigurationSource()))
+                 .cors(cors->cors.configurationSource(corsConfigurationSource()))
 
         .build();
 

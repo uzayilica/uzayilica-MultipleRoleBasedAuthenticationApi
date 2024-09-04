@@ -26,6 +26,6 @@ public class Users {
     private String password;
 
     @JsonManagedReference // Kullanıcıdan gelen rol referansları
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<Roles> roles;
 }
