@@ -24,13 +24,11 @@ public class LoginController {
 
     private final MyUserDetailsService myUserDetailsService;
     private final PasswordEncoder passwordEncoder;
-    private final AuthenticationManagerBuilder authenticationManagerBuilder;
     private final JwtService jwtService;
 
-    public LoginController(MyUserDetailsService myUserDetailsService, PasswordEncoder passwordEncoder, AuthenticationManagerBuilder authenticationManagerBuilder, JwtService jwtService) {
+    public LoginController(MyUserDetailsService myUserDetailsService, PasswordEncoder passwordEncoder, JwtService jwtService) {
         this.myUserDetailsService = myUserDetailsService;
         this.passwordEncoder = passwordEncoder;
-        this.authenticationManagerBuilder = authenticationManagerBuilder;
         this.jwtService = jwtService;
     }
 
